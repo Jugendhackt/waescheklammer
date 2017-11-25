@@ -23,3 +23,5 @@ Außerdem kann der aktuelle Projektstatus auf [Hackdash](https://hackdash.org/pr
 ----
 Am Projekt mitgewirkt haben:
 
+
+@blitze299
