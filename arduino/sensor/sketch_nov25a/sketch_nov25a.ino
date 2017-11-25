@@ -32,12 +32,15 @@ void loop()
     Serial.println("Unknown error"); 
     break;
   }
-
+  
+  int humidity = (float)DHT11.humidity;
   Serial.print("Humidity (%): ");
-  Serial.println((float)DHT11.humidity, 2);
+  Serial.println(humidity);
+  
+ 
 
   Serial.print("Temperature (°C): ");
-  Serial.println((float)DHT11.temperature, 2);
+  Serial.println((float)DHT11.temperature);
 
   delay(2000);
 }
