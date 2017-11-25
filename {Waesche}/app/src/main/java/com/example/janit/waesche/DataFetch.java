@@ -9,23 +9,23 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Collection;
 
 /**
  * Created by janit on 25.11.2017.
  */
-public class WeatherFetch {
+public class DataFetch {
+    private static final String OPEN_AIRTABLE_URL =
+            "https://api.airtable.com/v0/appS3P0MHWE8rtZFz/Table%201?maxRecords=3&view=Grid%20view";
 
-    private static final String OPEN_WEATHER_MAP_API =
-            "http://api.openweathermap.org/data/2.5/weather?q=%s&units=metric";
-
-    public static JSONObject getJSON(Context context, String city, String apikey){
+    public static JSONObject getJSON(Context context, String apikey){
 
         try {
 
-            URL url = new URL(String.format(OPEN_WEATHER_MAP_API, city));
+            URL url = new URL(OPEN_AIRTABLE_URL);
             HttpURLConnection connection =
                     (HttpURLConnection)url.openConnection();
-            connection.addRequestProperty("x-api-key",
+            connection.addRequestProperty("authorization","Bearer "+
                     apikey);
             Log.d("Geht", apikey);
             BufferedReader reader = new BufferedReader(
@@ -36,10 +36,11 @@ public class WeatherFetch {
                 json.append(tmp).append("\n");
             reader.close();
             JSONObject data = new JSONObject(json.toString());
-            Log.d(data.toString(), "test");
+            Log.d("DatenFetch",data.toString());
             // This value will be 404 if the request was not
             // successful
-            if(data.getInt("cod") != 200){
+            Log.d("Response Code",""+connection.getResponseCode());
+            if(200 != connection.getResponseCode()){
                 return null;
             }
 
@@ -47,7 +48,7 @@ public class WeatherFetch {
         }catch(Exception e){
             Log.d("Geht","nicht");
             Log.d("exeption",e.getMessage());
-             e.printStackTrace();
+            e.printStackTrace();
             return null;
         }
     }

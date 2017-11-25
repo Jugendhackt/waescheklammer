@@ -43,6 +43,7 @@ import org.json.JSONObject;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Properties;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity
     private TextView weatherIcon;
     RelativeLayout wetter;
     RelativeLayout wäsche;
+    private PropertyReader assetsPropertyReader;
+    private Properties p;
 
 
     public MainActivity()
@@ -64,6 +67,11 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        assetsPropertyReader = new PropertyReader(this);
+        p = assetsPropertyReader.getProperties("api.properties");
+
+
 
         setContentView(R.layout.activity_main);
         wetter = (RelativeLayout) findViewById(R.id.wetter);
@@ -87,7 +95,7 @@ public class MainActivity extends AppCompatActivity
 
 
         updateWeatherData("Berlin, DE");
-
+        updatePercent();
 
 
         donutProgress.setOnClickListener(new View.OnClickListener() {
@@ -136,7 +144,31 @@ public class MainActivity extends AppCompatActivity
       final  Activity activity = this;
         new Thread(){
             public void run(){
-                final JSONObject json = WeatherFetch.getJSON(activity, city);
+                final JSONObject json = WeatherFetch.getJSON(activity, city, p.getProperty("WEATHERAPI"));
+                if(json == null){
+                    handler.post(new Runnable(){
+                        public void run(){
+                            Toast.makeText(activity,
+                                    activity.getString(R.string.place_not_found),
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    });
+                } else {
+                    handler.post(new Runnable(){
+                        public void run(){
+                            renderWeather(json);
+                        }
+                    });
+                }
+            }
+        }.start();
+    }
+
+    private void updatePercent(){
+        final  Activity activity = this;
+        new Thread(){
+            public void run(){
+                final JSONObject json = DataFetch.getJSON(activity, p.getProperty("AIRTABLE"));
                 if(json == null){
                     handler.post(new Runnable(){
                         public void run(){
