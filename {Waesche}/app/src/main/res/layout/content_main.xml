@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/wäsche"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.janit.waesche.MainActivity"
+    tools:showIn="@layout/app_bar_main">
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.janit.waesche.MainActivity"
+        tools:showIn="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/progress"
+        android:visibility="visible">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ihre Wäsche"
+        android:id="@+id/textView2"
+        android:textSize="20dp"
+
+        android:visibility="visible"
+        android:layout_marginLeft="170dp"
+        android:layout_marginTop="250dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Temperatur"
+            android:textSize="20dp"
+            android:visibility="visible"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="60dp" />
+
+    <com.github.lzyzsd.circleprogress.DonutProgress
+        android:id="@+id/donut_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:visibility="visible"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginLeft="170dp" />
+
+        <com.example.janit.waesche.Thermometer
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/thermo"
+            />
+
+        <com.github.lzyzsd.circleprogress.DonutProgress
+            android:id="@+id/donut_progressTemperatur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="100dp" />
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="com.example.janit.waesche.MainActivity"
+        tools:showIn="@layout/app_bar_main"
+        android:visibility="invisible"
+        android:id="@+id/wetter">
+
+        <TextView
+            android:id="@+id/weather_icon"
+            android:text="Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="70sp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="60dp" />
+
+        <TextView
+            android:id="@+id/current_temperature_field"
+            android:text="temperatur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textSize="40sp"
+            android:layout_centerVertical="true"
+            android:layout_alignLeft="@+id/textViewWetter"
+            android:layout_alignStart="@+id/textViewWetter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Das Wetter"
+            android:id="@+id/textViewWetter"
+            android:textIsSelectable="false"
+            android:textSize="40dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="In Berlin"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textViewWetter"
+            android:layout_centerHorizontal="true"
+            android:textSize="40dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+
+
