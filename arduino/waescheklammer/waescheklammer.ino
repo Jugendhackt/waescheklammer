@@ -63,7 +63,7 @@ void loop() {
 
   
  
-   HTTPClient http;    //Declare object of class HTTPClient
+   HTTPClient http;    
 
    //Specify request destination -> in this case a ifttt adress / REST-API wich accepts POST-request
    http.begin("http://maker.ifttt.com/trigger/default/with/key/knv6299hNGG7fF53lqdCuXFt2VjjwlFr7_MJ1s2Xm9L");      
@@ -77,7 +77,8 @@ void loop() {
 
    http.end();  //Close connection
 
-   delay(30000);  //Send a request every 30 seconds
+   //delay(30000);  //Send a request every 30 seconds -> normal mode
+   delay(10000);  //Send a request every 10 seconds -> presentation mode
    
  }else{
  
