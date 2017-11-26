@@ -6,7 +6,6 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="open_weather_maps_app_id">c1ae6a315746e8ae4fe37af2f819402a</string>
 
     <string name="weather_sunny">&#xf00d;</string>
     <string name="weather_clear_night">&#xf02e;</string>

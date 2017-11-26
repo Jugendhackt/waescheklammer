@@ -25,4 +25,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.github.lzyzsd:circleprogress:1.2.1'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.1.0'
+
 }
